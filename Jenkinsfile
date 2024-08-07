@@ -10,7 +10,7 @@ pipeline {
         stage('Build docker image'){
             steps{
                 script{
-                    sh 'docker build -t alekhya1607/phpimgv1 .'
+                    sh 'docker build -t alekhya1607/phpimgv2 .'
                     sh 'docker images'
                 }
             }
@@ -19,7 +19,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-pwd', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
                     sh "echo $PASS | docker login -u $USER --password-stdin"
-                    sh 'docker push alekhya1607/phpimgv1'
+                    sh 'docker push alekhya1607/phpimgv2'
                 }
             }
         }
@@ -27,7 +27,7 @@ pipeline {
      stage('Deploy') {
             steps {
                 script{
-                    sh 'sudo docker run -itd --name My-project-con -p 8089:80 alekhya1607/phpimgv1'
+                    sh 'sudo docker run -itd --name My-project-con -p 8089:80 alekhya1607/phpimgv2'
                        }
                     }
                 }
