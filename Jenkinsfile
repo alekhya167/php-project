@@ -32,15 +32,4 @@ pipeline {
                     }
                 }
     }
-    post {
-        always {
-            archiveArtifacts artifacts: 'target/*.jar', allowEmptyArchive: true
-        }
-        success {
-            echo 'Build and Deploy successful!'
-        }
-        failure {
-            echo 'Build or Deploy failed.'
-        }
-    }
 }
