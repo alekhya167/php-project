@@ -27,7 +27,7 @@ pipeline {
      stage('Deploy') {
             steps {
                 script{
-                    sh 'sudo docker run -itd --name My-project2-con -p 8089:80 alekhya1607/phpimgv2'
+                    sh 'sudo docker run -itd --name My-project2-con -p 8088:80 alekhya1607/phpimgv2'
                        }
                     }
                 }
